@@ -1,0 +1,58 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<div class="lgcenter">
+<img src="assets/image/logo/login_logo.png">
+</div>
+<form>
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" value="" name="username" [(ngModel)]="logincrd.username" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" value="" name="password" [(ngModel)]="logincrd.password" required></ion-input>
+      </ion-item>
+
+    
+
+    <ion-row>
+	<ion-col>	
+      <button ion-button color="primary" block (click)="login(logincrd);">Sign In</button>
+    </ion-col>
+    <ion-col>
+      <button ion-button width-50 color="primary" block>Cancel</button>
+    </ion-col>
+    </ion-row>
+    <ion-item>
+    <ion-row>
+    <a (click)="createAccount()">Register account</a>
+    </ion-row>
+    </ion-item>
+ </form>
+ <ion-card>
+	<ion-card-content>
+	<p>
+	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	</p>
+	</ion-card-content>
+ </ion-card>
+</ion-content>

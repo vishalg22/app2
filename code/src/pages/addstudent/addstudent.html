@@ -1,0 +1,172 @@
+<!--
+  Generated template for the AddstudentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+			<ion-avatar item-right>
+				<img src="../assets/image/dashboard/children.png">
+			</ion-avatar>			
+			</ion-col>
+			<ion-col>
+				<div>
+					<ion-input type="text" placeholder="Enter Student Name Here"></ion-input>
+				</div>
+				<div>
+					<ion-datetime displayFormat="DDD MMM D,YYYY" placeholder="Select DOB" min="2000" max="2020-10-31" [(ngModel)]="myDate"></ion-datetime>
+				</div>
+				<div>
+					<ion-select [(ngModel)]="bgr" placeholder="Select Blood group">
+						<!--<div *ngFor="let bgr of bgrp_arr">
+							{{bgr.title}}
+							<ion-option value="bgr.id">{{bgr.title}}</ion-option>
+						</div>-->
+						
+						<ion-option value="bgr.id" *ngFor="let bgr of bgrp_arr">{{bgr.title}}</ion-option>
+						
+						<!--<ion-option value="1">A+</ion-option>
+						<ion-option value="2">B+</ion-option>					
+						<ion-option value="3">AB+</ion-option>					
+						<ion-option value="3">O+</ion-option>-->
+											
+					</ion-select>
+				</div>
+			</ion-col>		
+		</ion-row>
+		
+		<ion-row>
+			<ion-col>
+				<div>
+					<ion-select [(ngModel)]="gender" placeholder="Select Gender">
+						<ion-option value="1">Female</ion-option>
+						<ion-option value="2">Male</ion-option>					
+					</ion-select>
+				</div>
+				
+				<div>
+				<ion-select [(ngModel)]="class_name" placeholder="Select Class">
+					<ion-option>A</ion-option>
+					<ion-option>B</ion-option>
+					<ion-option>C</ion-option>       
+				</ion-select>
+				</div>
+				<div>
+				<ion-select [(ngModel)]="division" placeholder="Select Division">
+					   <ion-option>1</ion-option>
+					   <ion-option>2</ion-option>
+					   <ion-option>3</ion-option>       
+				   </ion-select>
+				</div>   
+			</ion-col>
+	  </ion-row>
+	  <ion-row>
+		  
+			<ion-col>
+				<ion-item>
+						<ion-label floating>Primary Address</ion-label>
+						<ion-textarea rows="3" cols="30" name="paddress" id="paddress"></ion-textarea>
+				</ion-item>
+				<ion-item>
+   						<ion-label floating>Secondary Address</ion-label>
+						<ion-textarea rows="3" cols="30"  name="saddress" id="taddress"></ion-textarea>
+				</ion-item>
+			
+			</ion-col>
+		
+		
+		</ion-row>
+		<ion-row>
+		<ion-segment [(ngModel)]="gaurdian">
+			<ion-segment-button value="mother">
+			Mother
+			</ion-segment-button>
+			<ion-segment-button value="father">
+			Father
+			</ion-segment-button>
+			<ion-segment-button value="other">
+			Others
+			</ion-segment-button>
+		</ion-segment>
+		</ion-row>
+		<ion-row>
+		<div [ngSwitch]="gaurdian">
+			<div *ngSwitchCase="'mother'">
+				<div>
+					<ion-input type="text" placeholder="Enter Mother Name" id="mname"></ion-input>
+				</div>
+				<div>
+					<ion-label inline>Address</ion-label>
+					<ion-textarea rows="3" cols="30" name="maddress" id="maddress"></ion-textarea>				
+				</div>
+				<div>
+					<ion-input type="number" placeholder="Enter Primary Mobile Number" id="mcell"></ion-input>
+				</div>
+				<div>
+					<ion-input type="text" placeholder="Enter Primary Email" id="memail"></ion-input>
+				</div>
+			</div>
+			<div *ngSwitchCase="'father'">
+				<div>
+					<ion-input type="text" placeholder="Enter Father Name" id="fname"></ion-input>
+				</div>
+				<div>
+					<ion-label inline>Address</ion-label>
+					<ion-textarea rows="3" cols="30" name="paddress" id="faddress"></ion-textarea>				
+				</div>
+				<div>
+					<ion-input type="number" placeholder="Enter Primary Mobile Number" id="fcell"></ion-input>
+				</div>
+				<div>
+					<ion-input type="text" placeholder="Enter Primary Email" id="femail"></ion-input>
+				</div> 
+			</div>
+			<div *ngSwitchCase="'other'">
+				<div>
+					<ion-input type="text" placeholder="Enter Other Relative Name" id="oname"></ion-input>
+				</div>
+				<div>
+					<ion-input type="text" placeholder="What is reletion with student?" id="oname"></ion-input>
+				</div>
+				<div>
+					<ion-label inline>Address</ion-label>
+					<ion-textarea rows="3" cols="30" name="ooaddress" id="oaddress"></ion-textarea>				
+				</div>
+				<div>
+					<ion-input type="number" placeholder="Enter Primary Mobile Number" id="ocell"></ion-input>
+				</div>
+				<div>
+					<ion-input type="text" placeholder="Enter Primary Email" id="oemail"></ion-input>
+				</div>
+			</div>
+		</div>
+		
+		</ion-row>
+		<ion-row>
+		<ion-col>	
+		<button ion-button color="primary" block>Save</button>
+		</ion-col>
+		<ion-col>
+		<button ion-button width-50 color="primary" block>Cancel</button>
+		</ion-col>
+		</ion-row>
+
+	</ion-grid>
+
+</ion-content>
