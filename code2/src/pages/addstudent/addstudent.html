@@ -1,0 +1,164 @@
+<!--
+  Generated template for the AddstudentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+<form  #f="ngForm" (ngSubmit)="addStudent(student)">
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+			<div class="img_container" item-right>
+				<img class="" src="{{lastImage}}">
+        <div>
+          <button class="" ion-button block outline (click)="presentCameraAction()">upload</button>
+        </div>
+			</div>
+			</ion-col>
+			<ion-col>
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="student.sname" name="sname" placeholder="Enter Student Name"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-datetime displayFormat="DDD MMM D,YYYY" placeholder="Select DOB" min="2000" max="2020-10-31" [(ngModel)]="student.myDob" name="myDob"></ion-datetime>
+				</ion-item>
+				<div>
+          <ion-item>
+					<ion-select [(ngModel)]="student.bgrp" name="bgrp" placeholder="Select Blood group" [selectOptions]="bgrpOpts">
+						<ion-option *ngFor="let bgr of bgrp_arr" [value]="bgr.id" >{{bgr.title}}</ion-option>
+					</ion-select>
+        </ion-item>
+				</div>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col>
+				<ion-item>
+          <ion-label>Gender</ion-label>
+					<ion-select [(ngModel)]="student.gender_val" name="gender_val" placeholder="Select Gender" [selectOptions]="genderOpts">
+						<ion-option *ngFor="let gen of gender" [value]="gen.id">{{gen.title}}</ion-option>
+					</ion-select>
+				</ion-item>
+
+				<ion-item>
+        <ion-label>Class</ion-label>
+				<ion-select [(ngModel)]="student.class_name" name="class_name" placeholder="Select Class" [selectOptions]="classOpts">
+					<ion-option *ngFor="let cls of classess" [value]="cls.id">{{cls.title}}</ion-option>
+				</ion-select>
+      </ion-item>
+				<ion-item>
+        <ion-label>Division</ion-label>
+				<ion-select [(ngModel)]="student.division" name="division" placeholder="Select Division" [selectOptions]="divOpts">
+					   <ion-option *ngFor="let div of divisions" [value]="div.id">{{div.title}}</ion-option>
+				</ion-select>
+      </ion-item>
+			</ion-col>
+	  </ion-row>
+	  <ion-row>
+
+			<ion-col>
+				<ion-item>
+						<ion-label floating>Primary Address</ion-label>
+						<ion-textarea rows="3" cols="30" name="paddress" [(ngModel)]="student.paddress" name="paddress" id="paddress"></ion-textarea>
+				</ion-item>
+				<ion-item>
+   						<ion-label floating>Secondary Address</ion-label>
+						<ion-textarea rows="3" cols="30"  name="saddress" [(ngModel)]="student.saddress" name="saddress" id="taddress"></ion-textarea>
+				</ion-item>
+
+			</ion-col>
+
+
+		</ion-row>
+		<ion-row>
+		<ion-segment [(ngModel)]="student.gaurdian" name="gaurdian_o">
+			<ion-segment-button value="mother">
+			Mother
+			</ion-segment-button>
+			<ion-segment-button value="father">
+			Father
+			</ion-segment-button>
+			<ion-segment-button value="other">
+			Others
+			</ion-segment-button>
+		</ion-segment>
+		</ion-row>
+		<ion-row>
+		<div [ngSwitch]="student.gaurdian">
+			<div *ngSwitchCase="'mother'">
+				<div>
+					<ion-input type="text" placeholder="Enter Mother Name" [(ngModel)]="student.guardian_mother.mname" name="mname" id="mname"></ion-input>
+				</div>
+				<div>
+					<ion-label inline>Address</ion-label>
+					<ion-textarea rows="3" cols="30" name="maddress" [(ngModel)]="student.guardian_mother.maddress" name="gmaddress" id="maddress"></ion-textarea>
+				</div>
+				<div>
+					<ion-input type="number" placeholder="Enter Primary Mobile Number" [(ngModel)]="student.guardian_mother.mcell" name="mcell" id="mcell"></ion-input>
+				</div>
+				<div>
+					<ion-input type="text" placeholder="Enter Primary Email" [(ngModel)]="student.guardian_mother.memail" name="memail" id="memail"></ion-input>
+				</div>
+			</div>
+			<div *ngSwitchCase="'father'">
+				<div>
+					<ion-input type="text" placeholder="Enter Father Name" [(ngModel)]="student.guardian_father.fname" name="ffname" id="fname"></ion-input>
+				</div>
+				<div>
+					<ion-label inline>Address</ion-label>
+					<ion-textarea rows="3" cols="30" name="faddress" [(ngModel)]="student.guardian_father.faddress" name="faddress" id="faddress"></ion-textarea>
+				</div>
+				<div>
+					<ion-input type="number" placeholder="Enter Primary Mobile Number" [(ngModel)]="student.guardian_father.fcell" name="fcell" id="fcell"></ion-input>
+				</div>
+				<div>
+					<ion-input type="text" placeholder="Enter Primary Email" [(ngModel)]="student.guardian_father.femail" name="femail" id="femail"></ion-input>
+				</div>
+			</div>
+			<div *ngSwitchCase="'other'">
+				<div>
+					<ion-input type="text" placeholder="Enter Other Relative Name" [(ngModel)]="student.guardian_other.oname" name="oname" id="oname"></ion-input>
+				</div>
+				<div>
+					<ion-input type="text" placeholder="What is reletion with student?" [(ngModel)]="student.guardian_other.orelation" name="orelation" id="orelation"></ion-input>
+				</div>
+				<div>
+					<ion-label inline>Address</ion-label>
+					<ion-textarea rows="3" cols="30" name="oaddress" [(ngModel)]="student.guardian_other.oaddress" name="oaddress" id="oaddress"></ion-textarea>
+				</div>
+				<div>
+					<ion-input type="number" placeholder="Enter Primary Mobile Number" [(ngModel)]="student.guardian_other.ocell" name="ocell" id="ocell"></ion-input>
+				</div>
+				<div>
+					<ion-input type="text" placeholder="Enter Primary Email" [(ngModel)]="student.guardian_other.ocell" name="ocell" id="oemail"></ion-input>
+				</div>
+			</div>
+		</div>
+
+		</ion-row>
+		<ion-row>
+		<ion-col>
+		<button ion-button color="primary" block>Save</button>
+		</ion-col>
+		<ion-col>
+		<button ion-button width-50 color="primary" block>Cancel</button>
+		</ion-col>
+		</ion-row>
+
+	</ion-grid>
+</form>
+</ion-content>

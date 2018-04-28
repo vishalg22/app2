@@ -1,0 +1,56 @@
+<!--
+  Generated template for the AddnoticePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<form [formGroup]="notice" (submit)="createNotice()">
+	<ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input type="text" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+       <ion-label>Select Class</ion-label>
+       <ion-select [(ngModel)]="class_name" multiple="true">
+       <ion-option *ngFor="let k of ckys" [value]="sclass[k].id">{{sclass[k].title}}</ion-option>
+       </ion-select>
+    </ion-item>
+    <ion-item>
+       <ion-label>Select Division</ion-label>
+       <ion-select [(ngModel)]="division_id" multiple="true">
+       <ion-option *ngFor="let dk of dkys" [value]="division[dk].id">{{division[dk].title}}</ion-option>
+
+       </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating>Description</ion-label>
+		<ion-textarea rows="5" cols="30" name="Ndescription" id="ndesc"></ion-textarea>
+    </ion-item>
+
+
+    <ion-row>
+	<ion-col>
+      <button ion-button color="primary" block>Send</button>
+    </ion-col>
+    <ion-col>
+      <button ion-button width-50 color="primary" block>Cancel</button>
+    </ion-col>
+    </ion-row>
+</form>
+
+</ion-content>

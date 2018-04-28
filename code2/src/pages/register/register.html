@@ -1,0 +1,79 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<form [formGroup]="reg" (ngSubmit)="register(reg.value)">
+	  <ion-item>
+        <ion-label floating>First Name</ion-label>
+        <ion-input type="text" formControlName="fname" [(ngModel)]="reg.fname" name="fname"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label floating>Last Name</ion-label>
+        <ion-input type="text" value="" formControlName="lname" [(ngModel)]="reg.lname" name="lname"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Address</ion-label>
+		<ion-textarea rows="3" cols="30" formControlName="address" [(ngModel)]="reg.address" name="address" id="caddress"></ion-textarea>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Email</ion-label>
+		<ion-input type="email" value="" formControlName="email" [(ngModel)]="reg.email" name="email" required email></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Mobile Number</ion-label>
+        <ion-input type="number" value="" formControlName="mobile" [(ngModel)]="reg.mobile" name="mobile"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>DoB</ion-label>
+		<ion-datetime displayFormat="DDD MMM D,YYYY" min="2000" max="2020-10-31" formControlName="dob" [(ngModel)]="reg.dob" name="dob"></ion-datetime>
+        <!--<ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.month"></ion-datetime>
+		<ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>-->
+    </ion-item>
+
+    <ion-item>
+		<button ion-button color="secondary" outline block (click)="getStudent()">Select your child</button>
+    <input type="hidden" formControlName="stid" name="stid" value="{{student_id}}" [(ngModel)]="reg.stid">
+    </ion-item>
+    <div [hidden]="!show_stud">
+      <ion-card>
+        <ion-item>
+          <ion-avatar item-start>
+          <img src="{{simage}}">
+          </ion-avatar>
+        <h2>{{stitle}}</h2>
+        <ion-row><ion-col>DOB :</ion-col><ion-col>{{sdob}}</ion-col></ion-row>
+        <ion-row><ion-col>Class :</ion-col><ion-col>{{sclass}}</ion-col></ion-row>
+        <ion-row><ion-col>Division :</ion-col><ion-col>{{sdiv}}</ion-col></ion-row>
+
+        </ion-item>
+      </ion-card>
+    </div>
+
+
+    <ion-row>
+	<ion-col>
+      <button type="submit" ion-button color="primary" block >Register</button>
+    </ion-col>
+    <ion-col>
+      <button ion-button width-50 color="primary" block>Cancel</button>
+    </ion-col>
+    </ion-row>
+</form>
+</ion-content>
